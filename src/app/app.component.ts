@@ -1,5 +1,6 @@
-import {AfterViewInit, Component} from '@angular/core';
+import {AfterViewInit, Component, OnInit} from '@angular/core';
 import * as $ from 'jquery';
+import {ActivatedRoute} from "@angular/router";
 
 // declare var $:any
 
@@ -8,24 +9,8 @@ import * as $ from 'jquery';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements AfterViewInit {
+export class AppComponent {
   title = 'Tea_Store';
-
-
-  constructor() {
-  }
-
-  ngAfterViewInit() {
-    $(document).ready(function () {
-      $("div").click(function (el) {
-        console.log((el.target.innerText)
-        )
-      });
-    });
-  }
-
-  submitDiv() {
-  }
 
 
 }
