@@ -1,0 +1,10 @@
+<div class="card bg-white card col-sm">
+  <div class="tea-image">
+    <img [src]="product.image" class="card-img-top" alt="tea image {{i+1}}">
+  </div>
+  <div class="card-body text-center">
+    <h5 class="card-title fs-5 fw-bold ">{{product.title}}</h5>
+    <a [routerLink]="['/catalog',product.id]" class="btn px-5 hvr-pulse btn-primary">Подробнее</a>
+  </div>
+</div>
+

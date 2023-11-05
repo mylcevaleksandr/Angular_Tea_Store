@@ -1,6 +1,7 @@
 import {AfterViewInit, Component, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {Observable, Subscription} from "rxjs";
+import {Router} from "@angular/router";
 
 
 @Component({
@@ -14,11 +15,11 @@ export class MainComponent implements OnInit, AfterViewInit, OnDestroy {
   private subscription: Subscription | null = null
 
 
-  constructor(private modalService: NgbModal) {
+  constructor(private modalService: NgbModal, private router: Router) {
     this.observable = new Observable<any>((observer) => {
       const modalTimeOut = setTimeout(() => {
         observer.next(this.myModal)
-      }, 10000)
+      }, 2000)
       return {
         unsubscribe() {
           clearTimeout(modalTimeOut)
@@ -39,6 +40,7 @@ export class MainComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   ngOnDestroy() {
+    this.modalService.dismissAll()
     this.subscription?.unsubscribe()
   }
 
@@ -47,6 +49,7 @@ export class MainComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   goToCatalog() {
+    this.router.navigate(['/catalog'])
   }
 
 }
