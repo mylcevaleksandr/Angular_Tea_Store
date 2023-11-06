@@ -12,7 +12,8 @@ import {ProductComponent} from './components/pages/product/product.component';
 import {OrderComponent} from './components/pages/order/order.component';
 import {HttpClientModule} from "@angular/common/http";
 import {ProductService} from "./services/product.service";
-import { ProductCardComponent } from './components/common/product-card/product-card.component';
+import {ProductCardComponent} from './components/common/product-card/product-card.component';
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 
 
 @NgModule({
@@ -29,7 +30,9 @@ import { ProductCardComponent } from './components/common/product-card/product-c
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [
     ProductService

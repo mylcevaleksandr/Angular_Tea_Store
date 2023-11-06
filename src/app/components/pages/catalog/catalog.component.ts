@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ProductService} from "../../../services/product.service";
 import {tap} from "rxjs";
 
@@ -7,9 +7,9 @@ import {tap} from "rxjs";
   templateUrl: './catalog.component.html',
   styleUrls: ['./catalog.component.scss']
 })
-export class CatalogComponent implements OnInit, AfterViewInit {
+export class CatalogComponent implements OnInit {
   public products: any = []
-   loading:boolean=false
+  loading: boolean = false
 
 
   constructor(private productService: ProductService) {
@@ -17,7 +17,6 @@ export class CatalogComponent implements OnInit, AfterViewInit {
 
   ngOnInit() {
     this.loading = true
-
     this.productService.getProducts()
       .pipe(
         tap(() => {
@@ -25,21 +24,14 @@ export class CatalogComponent implements OnInit, AfterViewInit {
         })
       )
       .subscribe(
-      {
-        next: (data) => {
-          this.products = data
-          console.log(this.products)
-        },
-        error: (err) => {
-          console.log(err)
+        {
+          next: (data) => {
+            this.products = data
+          },
+          error: (err) => {
+            console.log(err)
+          }
         }
-      }
-    )
+      )
   }
-
-  ngAfterViewInit() {
-    console.log(this.products)
-
-  }
-
 }
