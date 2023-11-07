@@ -1,6 +1,4 @@
-import {AfterViewInit, Component, OnInit} from '@angular/core';
-import * as $ from 'jquery';
-import {ActivatedRoute} from "@angular/router";
+import {Component} from '@angular/core';
 
 // declare var $:any
 
@@ -10,7 +8,4 @@ import {ActivatedRoute} from "@angular/router";
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'Tea_Store';
-
-
 }

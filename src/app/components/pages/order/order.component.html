@@ -1,7 +1,7 @@
 <div class="container py-3">
 
   <section class="form row pt-5  justify-content-center" id="formHide">
-    <div class="col-md-12 col-lg-8 col-xl-6">
+    <div *ngIf="!orderSuccess" class="col-md-12 col-lg-8 col-xl-6">
       <div class="row mb-5 text-center">
         <div class="col fs-2 fw-bold">
           Сделать заказ
@@ -21,9 +21,9 @@
           <input type="text" name="name" class="form-control" id="inputFirstName" formControlName="name">
           <div *ngIf="name?.invalid&&(name?.dirty||name?.touched)" class="text-danger">
             <div *ngIf="name?.errors?.['required']">
-            First name is required
+              First name is required
             </div>
-            <div *ngIf="name?.errors?.['name']">
+            <div *ngIf="name?.errors?.['data']">
               First name is incorrect
             </div>
           </div>
@@ -35,7 +35,7 @@
             <div *ngIf="last_name?.errors?.['required']">
               Last name is required
             </div>
-            <div *ngIf="name?.errors?.['last_name']">
+            <div *ngIf="last_name?.errors?.['data']">
               Last name is incorrect
             </div>
           </div>
@@ -47,13 +47,13 @@
             <div *ngIf="phone?.errors?.['required']">
               Phone is required
             </div>
-            <div *ngIf="phone?.errors?.['phone']">
-              Phone name is incorrect
+            <div *ngIf="phone?.errors?.['data']">
+              Phone is incorrect
             </div>
           </div>
         </div>
         <div class="col-md-6 col-lg-6 mt-3 ">
-          <label for="inputCountry" class="form-label">Страна</label>
+          <label for="inputCountry" class="form-label ">Страна</label>
           <input type="text" name="country" class="form-control" id="inputCountry" formControlName="country">
           <div *ngIf="country?.invalid&&(country?.dirty||country?.touched)" class="text-danger">
             <div *ngIf="country?.errors?.['required']">
@@ -77,21 +77,23 @@
             <div *ngIf="address?.errors?.['required']">
               Address is required
             </div>
-            <div *ngIf="address?.errors?.['address']">
+            <div *ngIf="address?.errors?.['data']">
               Address is incorrect
             </div>
           </div>
         </div>
         <div class="col-12 mt-4 d-flex justify-content-center justify-content-lg-start">
           <div class="row">
-            <div class="col-auto">
+            <div class="col-auto d-flex justify-content-around align-items-center">
               <button class="btn btn-primary ps-4 pe-4" id="submitButton" (click)="createOrder()">
                 Отправить
               </button>
+              <div *ngIf="orderError" class="ms-4 text-danger">Произошла ошибка. Попробуйте еще раз.</div>
             </div>
           </div>
         </div>
       </form>
     </div>
+    <div class="fs-2 fw-bold text-center" *ngIf="orderSuccess">Спасибо за заказ!</div>
   </section>
 </div>

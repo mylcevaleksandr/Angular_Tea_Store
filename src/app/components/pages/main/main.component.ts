@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, OnDestroy, OnInit, ViewChild} from '@angular/core';
+import {AfterViewInit, Component, OnDestroy, ViewChild} from '@angular/core';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {Observable, Subscription} from "rxjs";
 import {Router} from "@angular/router";
@@ -9,7 +9,7 @@ import {Router} from "@angular/router";
   templateUrl: './main.component.html',
   styleUrls: ['./main.component.scss']
 })
-export class MainComponent implements OnInit, AfterViewInit, OnDestroy {
+export class MainComponent implements AfterViewInit, OnDestroy {
   @ViewChild("content") myModal: any;
   private observable: Observable<any>
   private subscription: Subscription | null = null
@@ -19,17 +19,13 @@ export class MainComponent implements OnInit, AfterViewInit, OnDestroy {
     this.observable = new Observable<any>((observer) => {
       const modalTimeOut = setTimeout(() => {
         observer.next(this.myModal)
-      }, 2000)
+      }, 10000)
       return {
         unsubscribe() {
           clearTimeout(modalTimeOut)
         }
       }
     })
-  }
-
-  ngOnInit() {
-
   }
 
   ngAfterViewInit() {
