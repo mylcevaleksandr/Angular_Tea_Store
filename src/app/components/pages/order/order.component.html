@@ -23,7 +23,7 @@
             <div *ngIf="name?.errors?.['required']">
               First name is required
             </div>
-            <div *ngIf="name?.errors?.['data']">
+            <div *ngIf="name?.errors?.['data']&&(name?.dirty)">
               First name is incorrect
             </div>
           </div>
@@ -35,7 +35,7 @@
             <div *ngIf="last_name?.errors?.['required']">
               Last name is required
             </div>
-            <div *ngIf="last_name?.errors?.['data']">
+            <div *ngIf="last_name?.errors?.['data']&&(last_name?.dirty)">
               Last name is incorrect
             </div>
           </div>
@@ -47,7 +47,7 @@
             <div *ngIf="phone?.errors?.['required']">
               Phone is required
             </div>
-            <div *ngIf="phone?.errors?.['data']">
+            <div *ngIf="phone?.errors?.['data']&&(phone?.dirty)">
               Phone is incorrect
             </div>
           </div>
@@ -77,7 +77,7 @@
             <div *ngIf="address?.errors?.['required']">
               Address is required
             </div>
-            <div *ngIf="address?.errors?.['data']">
+            <div *ngIf="address?.errors?.['data']&&(address?.dirty)">
               Address is incorrect
             </div>
           </div>

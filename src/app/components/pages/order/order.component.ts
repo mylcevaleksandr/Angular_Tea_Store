@@ -88,16 +88,18 @@ export class OrderComponent implements OnInit, OnDestroy {
       const control = this.signInForm.get(field);
       control?.markAsTouched({onlySelf: true});
     });
-    this.productService.sendOrder(this.signInForm.getRawValue())
-      .subscribe(response => {
-        if (response.success && !response.message) {
-          this.orderSuccess = true
-        } else {
-          this.orderError = true
-          setTimeout(() => {
-            this.orderError = false
-          }, 3000)
-        }
-      })
+    if (this.signInForm.valid) {
+      this.productService.sendOrder(this.signInForm.getRawValue())
+        .subscribe(response => {
+          if (response.success && !response.message) {
+            this.orderSuccess = true
+          }
+        })
+    } else {
+      this.orderError = true
+      setTimeout(() => {
+        this.orderError = false
+      }, 3000)
+    }
   }
 }
