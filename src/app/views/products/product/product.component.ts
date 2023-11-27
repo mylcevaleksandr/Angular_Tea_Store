@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Params, Router} from "@angular/router";
-import {ProductType} from "../../../types/product.type";
-import {ProductService} from "../../../services/product.service";
+import {ProductType} from "../../../../types/product.type";
+import {ProductService} from "../../../shared/services/product.service";
 import {tap} from "rxjs";
 
 @Component({
@@ -11,7 +11,7 @@ import {tap} from "rxjs";
 })
 export class ProductComponent implements OnInit {
   product: ProductType
-  loading:boolean=false
+  loading: boolean = false
 
   constructor(private activatedRoute: ActivatedRoute, private productService: ProductService, private router: Router) {
     this.product = {
